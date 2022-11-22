@@ -1,0 +1,65 @@
+<p-toast key="tsm" [hideTransitionOptions]="'1000ms'" [style]="{marginTop: '20px'}"></p-toast>
+<p-confirmDialog #cdg header="Confirmation" icon="pi pi-exclamation-triangle">
+    <p-footer>
+        <button type="button" pButton icon="pi pi-times" label="No" (click)="cdg.reject()"></button>
+        <button type="button" pButton icon="pi pi-check" label="Si" (click)="cdg.accept()"></button>
+    </p-footer>
+</p-confirmDialog>
+<div class="display">
+    <div class="child">
+        <p-fieldset legend="Lista de Empleados">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="Agregar" icon="pi pi-plus" class="p-button-success p-mr-2" [routerLink]="['/empleado/crear']"></button>
+                </ng-template>
+
+            </p-toolbar>
+            <p-table #dt [value]="empleados" [rows]="10" [paginator]="true" [rowHover]="true" [showCurrentPageReport]="true" responsiveLayout="scroll" [globalFilterFields]="['primerNombre','otrosNombres','primerApellido','segundoApellido','tipoIdentificacion','numeroIdentificacion','paisEmpleo','correo','estado']">
+                <ng-template pTemplate="caption">
+                    <div>
+                        <h2 class="p-m-0"></h2>
+                        <input pInputText type="text" (input)="applyFilterGlobal($event, 'contains')" placeholder="Buscar..." />
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Primer Nombre</th>
+                        <th>Otros Nombres</th>
+                        <th>Primer Apellido</th>
+                        <th>Segundo Apellido</th>
+                        <th>Tipo de Identificación</th>
+                        <th>Numero de Identificación</th>
+                        <th>País de Empleo</th>
+                        <th>Correo Electrónico</th>
+                        <th>Área</th>
+                        <th>Estado</th>
+                        <th>Fecha de Ingreso</th>
+                        <th>Fecha y Hora de Registro</th>
+                        <th>Acciones</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-empleado>
+                    <tr>
+                        <td>{{empleado.primerNombre}}</td>
+                        <td>{{empleado.otrosNombres}}</td>
+                        <td>{{empleado.primerApellido}}</td>
+                        <td>{{empleado.segundoApellido}}</td>
+                        <td>{{empleado.tipoIdentificacion}}</td>
+                        <td>{{empleado.numeroIdentificacion}}</td>
+                        <td>{{empleado.paisEmpleo}}</td>
+                        <td>{{empleado.correoElectronico | lowercase}}</td>
+                        <td>{{empleado.area}}</td>
+                        <td>{{empleado.estado}}</td>
+                        <td>{{empleado.fechaIngreso | date: 'short':'GMT'}}</td>
+                        <td>{{empleado.fechaHoraRegistro | date: 'd/MM/y h:mm:ss a':'GMT'}}</td>
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil" [routerLink]="['/empleado/crear', empleado.id]" class="p-button-rounded p-button-success p-mr-2 butt"></button>
+                            <button pButton pRipple icon="pi pi-trash" (click)="eliminarEmpleado(empleado)" class="p-button-rounded p-button-warning butt"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+
+            </p-table>
+        </p-fieldset>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<p-toast key="tsm" position="top-center" [hideTransitionOptions]="'300ms'" [style]="{marginTop: '20px'}"></p-toast>
+<div class="display">
+    <p-fieldset>
+        <ng-template pTemplate="header">{{(empleado.id) ? 'Actualizar': 'Agregar'}} Empleado</ng-template>
+        <form [formGroup]="empleadoForm" (ngSubmit)="guardar()">
+            <div class="p-grid p-fluid">
+                <div class="p-col-12 p-md-4 child">
+                    <div class="p-inputgroup">
+                        <span class="p-float-label">
+                        <input id="primerNombre" type="text" pInputText class="form-control" pInputText formControlName="primerNombre"> 
+                        <label for="primerNombre">Nombre</label>
+                    </span>
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-4 child">
+                    <div class="p-inputgroup">
+                        <span class="p-float-label">
+                        <input id="otrosNombres" type="text" pInputText class="form-control" pInputText formControlName="otrosNombres"> 
+                        <label for="otrosNombres">Otros Nombres</label>
+                    </span>
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-4 child">
+                    <span class="p-float-label">
+                    <input id="primerApellido" type="text" pInputText class="form-control" pInputText formControlName="primerApellido"> 
+                    <label for="primerApellido">Primer Apellido</label>
+                </span>
+                </div>
+
+                <div class="p-col-12 p-md-4 child">
+                    <span class="p-float-label">
+                    <input id="segundoApellido" type="text" pInputText class="form-control" pInputText formControlName="segundoApellido"> 
+                    <label for="segundoApellido">Segundo Apellido</label>
+                </span>
+                </div>
+
+                <div class="p-col-12 p-md-4 child">
+                    <span class="p-float-label">
+                    <p-dropdown id="tipoIdentificacion" class="form-control" [options]="tipoIdentificacion" placeholder="Tipo de Identificación" [showClear]="false" formControlName="tipoIdentificacion"></p-dropdown>
+                </span>
+                </div>
+
+                <div class="p-col-12 p-md-4 child">
+                    <span class="p-float-label">
+                    <input id="numeroIdentificacion" type="text" pInputText class="form-control" pInputText formControlName="numeroIdentificacion"> 
+                    <label for="numeroIdentificacion">Numero de Identificación</label>
+                </span>
+                </div>
+
+                <div class="p-col-12 p-md-4 child">
+                    <span class="p-float-label">
+                    <p-dropdown id="paisEmpleo" class="form-control" [options]="paises" placeholder="Seleccione el País de Empleo" [showClear]="false" formControlName="paisEmpleo"></p-dropdown>
+                </span>
+                </div>
+
+                <div class="p-col-12 p-md-4 child">
+                    <span class="p-float-label">
+                    <p-dropdown id="area" class="form-control" [options]="areas" placeholder="Seleccione el Área" [showClear]="false" formControlName="area"></p-dropdown>
+                </span>
+                </div>
+
+                <div class="p-col-12 p-md-4 child">
+                    <span class="p-float-label">
+                    <p-calendar id="fechaIngreso" class="form-control" [showIcon]="true " inputId="icon " dateFormat="yy-mm-dd" placeholder="Fecha de Ingreso" formControlName="fechaIngreso"></p-calendar>
+                </span>
+                </div>
+
+
+            </div>
+
+            <div class="contenedor">
+
+                <button pButton type="button" class="p-button-primary button" type="submit" label="Guardar"></button>
+                <button [routerLink]="[ '/empleado']" pButton type="button" class="p-button-primary button" label="Volver"></button>
+
+            </div>
+
+        </form>
+    </p-fieldset>
+</div>

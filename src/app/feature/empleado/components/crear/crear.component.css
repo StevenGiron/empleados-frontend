@@ -1,0 +1,19 @@
+.contenedor {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.button {
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.display {
+    max-width: 60%;
+    margin: auto;
+}
+
+.child {
+    margin-top: 10px;
+}

@@ -1,0 +1,14 @@
+.display {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.butt {
+    margin: 5px;
+}
+
+
+/* .child {
+    padding: 50%;
+} */
